@@ -1,1 +1,1 @@
-# dJournal
+# dJournal smart contract
