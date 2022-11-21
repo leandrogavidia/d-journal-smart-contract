@@ -1,0 +1,25 @@
+{
+  "name": "dJournal",
+  "version": "1.0.0",
+  "description": "Smart contract for dJournal interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },  
+  "keywords": [
+    "Hardhat",
+    "Decentralized journal",
+    "BNBChain dev program",
+    "Solidity"
+  ],
+  "author": "Leandro Gavidia Santamaria <Leandrogavidia1234@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.4",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "chai": "^4.3.7",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.12.2"
+  }
+}
