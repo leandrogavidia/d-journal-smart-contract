@@ -31,6 +31,10 @@ contract DecentralizedJournal {
         return journals[msg.sender];
     }
 
+    function getOneNote(uint _noteId) public view returns(note memory) {
+        return journals[msg.sender][_noteId - 1];
+    }
+
     function getTotalNotes() public view returns(uint256) {
         console.log("You have:", journals[msg.sender].length, msg.sender);
         return journals[msg.sender].length;
