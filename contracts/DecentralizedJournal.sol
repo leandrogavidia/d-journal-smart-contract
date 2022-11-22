@@ -6,16 +6,24 @@ import "hardhat/console.sol";
 
 contract DecentralizedJournal {
     struct note {
-        string note;
+        string title;
+        string content;
         uint256 date;
+        uint256 id;
     }
 
     mapping(address => note[]) journals;
     
-    function addNote(string memory _newNote) public {
-        note memory newNote = note(_newNote, block.timestamp);
+    function addNote(string memory _title, string memory _content) public {
+        note memory newNote = note(
+            _title, 
+            _content, 
+            block.timestamp, 
+            journals[msg.sender].length + 1
+        );
+        
         journals[msg.sender].push(newNote);
-        console.log("Hi, you added:", _newNote);
+        console.log("Hi, you added:", _title);
     }
 
     function getJournal() public view returns(note[] memory) {
