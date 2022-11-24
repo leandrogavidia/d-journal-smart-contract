@@ -32,11 +32,38 @@ contract DecentralizedJournal {
     }
 
     function getOneNote(uint _noteId) public view returns(note memory) {
+        console.log(
+            journals[msg.sender][_noteId - 1].title,
+            journals[msg.sender][_noteId - 1].content,
+            journals[msg.sender][_noteId - 1].date,
+            journals[msg.sender][_noteId - 1].id
+        );
+
         return journals[msg.sender][_noteId - 1];
     }
 
     function getTotalNotes() public view returns(uint256) {
         console.log("You have:", journals[msg.sender].length, msg.sender);
         return journals[msg.sender].length;
+    }
+
+    function changeNoteTitle(uint256 _id, string memory _newTitle) public {
+        console.log(journals[msg.sender][_id - 1].title);
+        journals[msg.sender][_id - 1].title = _newTitle;
+        console.log(journals[msg.sender][_id - 1].title);
+    }
+
+    function changeNoteContent(uint256 _id, string memory _newContent) public {
+        console.log(journals[msg.sender][_id - 1].content);
+        journals[msg.sender][_id - 1].content = _newContent;
+        console.log(journals[msg.sender][_id - 1].content);
+    }
+
+    function deleteJournal() public {
+        console.log("You are deleting your journal", getTotalNotes());
+        for (uint i = 0; i <= journals[msg.sender].length + 1; i++) {
+            journals[msg.sender].pop();
+        }
+        console.log("Journal delete", getTotalNotes());
     }
 }
