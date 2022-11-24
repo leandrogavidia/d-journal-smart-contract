@@ -61,9 +61,7 @@ contract DecentralizedJournal {
 
     function deleteJournal() public {
         console.log("You are deleting your journal", getTotalNotes());
-        for (uint i = 0; i <= journals[msg.sender].length + 1; i++) {
-            journals[msg.sender].pop();
-        }
+        delete journals[msg.sender];
         console.log("Journal delete", getTotalNotes());
     }
 }
