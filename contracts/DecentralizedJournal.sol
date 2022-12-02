@@ -12,7 +12,7 @@ contract DecentralizedJournal {
 
     mapping(address => note[]) journals;
     
-    function addNote(string memory _title, string memory _content) public {
+    function addNote(string memory _title, string memory _content) external {
         note memory newNote = note(
             _title, 
             _content, 
@@ -21,6 +21,18 @@ contract DecentralizedJournal {
         );
         
         journals[msg.sender].push(newNote);
+    }
+
+    function changeNoteTitle(uint256 _id, string memory _newTitle) external {
+        journals[msg.sender][_id - 1].title = _newTitle;
+    }
+
+    function changeNoteContent(uint256 _id, string memory _newContent) external {
+        journals[msg.sender][_id - 1].content = _newContent;
+    }
+
+    function deleteJournal() external {
+        delete journals[msg.sender];
     }
 
     function getJournal() public view returns(note[] memory) {
@@ -33,17 +45,5 @@ contract DecentralizedJournal {
 
     function getTotalNotes() public view returns(uint256) {
         return journals[msg.sender].length;
-    }
-
-    function changeNoteTitle(uint256 _id, string memory _newTitle) public {
-        journals[msg.sender][_id - 1].title = _newTitle;
-    }
-
-    function changeNoteContent(uint256 _id, string memory _newContent) public {
-        journals[msg.sender][_id - 1].content = _newContent;
-    }
-
-    function deleteJournal() public {
-        delete journals[msg.sender];
     }
 }
