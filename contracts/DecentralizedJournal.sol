@@ -11,23 +11,23 @@ contract DecentralizedJournal {
     }
 
     mapping(address => note[]) journals;
-    
-    function addNote(string memory _title, string memory _content) external {
+
+    function addNote(string calldata _title, string calldata _content) external {
         note memory newNote = note(
-            _title, 
-            _content, 
-            block.timestamp, 
+            _title,
+            _content,
+            block.timestamp,
             journals[msg.sender].length + 1
         );
         
         journals[msg.sender].push(newNote);
     }
 
-    function changeNoteTitle(uint256 _id, string memory _newTitle) external {
+    function changeNoteTitle(uint256 _id, string calldata _newTitle) external {
         journals[msg.sender][_id - 1].title = _newTitle;
     }
 
-    function changeNoteContent(uint256 _id, string memory _newContent) external {
+    function changeNoteContent(uint256 _id, string calldata _newContent) external {
         journals[msg.sender][_id - 1].content = _newContent;
     }
 
